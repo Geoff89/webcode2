@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAvascript course | Animation</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial;
+            background: #f4f4f4;
+            line-height: 1.5em;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px #000 solid;
+            margin-bottom: 10px;
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+        #box{
+            background: #333;
+            color: #fff;
+            width: 500px;
+            height: 90px;
+            padding: 40px;
+            text-align: center;
+        }
+        #box2{
+            background: red;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Javascript | DOM</h1>
+    </header>
+    <div id="container">
+        <button id="btnfadeout">Fade out</button>
+        <button id="btnfadein">Fade In</button>
+        <button id="btnfadetog">Fade Toggle</button>
+
+        <hr>
+
+        <button id="btnslideup">Slide Up</button>
+        <button id="btnslidedown">Slide Down</button>
+        <button id="btnslidetog">Slide Toggle</button>
+        <button id="btnstop">Stop</button>
+
+        <hr>
+        <div id="box"><h1>Hello world</h1></div>
+
+        <hr>
+        <button id="moveleft">Move left</button>
+        <button id="moveright">Move right</button>
+        <button id="movearound">Move around</button>
+        <div id="box2"></div>
+
+
+    </div>
+    <script>
+        $(document).ready(function(){
+        $('#btnfadeout').click(function(){
+            $('#box').fadeOut(3000, function(){
+              $('#btnfadeout').text('Its gone');                
+            });
+        }); 
+        $('#btnfadein').click(function(){
+            $('#box').fadeIn(3000);
+        });
+        $('#btnfadetog').click(function(){
+            $('#box').fadeToggle(1000);
+        });
+        $('#btnslideup').click(function(){
+            $('#box').slideUp(3000);
+        });
+        $('#btnslidedown').click(function(){
+            $('#box').slideDown(3000);
+        });
+        $('#btnslidetog').click(function(){
+            $('#box').slideToggle(3000);
+        });
+        $('#btnstop').click(function(){
+            $('#box').stop();
+        });
+        $('#moveright').click(function(){
+            $('#box2').animate({
+                left: 500,
+                height:'300px',
+                width: '300px',
+                opacity: '0.5'
+                });
+        });
+        $('#moveleft').click(function(){
+            $('#box2').animate({
+                left: 0,
+                height:'100px',
+                width: '100px',
+                opacity: '1'});
+        });
+
+        $('#movearound').click(function(){
+            var box = $('#box2');
+            box.animate({
+                left:300
+            });
+            box.animate({
+                top:300
+            });
+            box.animate({
+                left:0,
+                top:300
+            });
+            box.animate({
+                left:0,
+                top:0
+            });
+        });
+    });
+    </script>
+</body>
+</html>
